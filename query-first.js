@@ -49,11 +49,8 @@ async function updateCourse(id) {
   //Modify its properties
   //save()
 
-  //Approach update first
-  // Update directly
-  //Optionally:  get the updated document
   if (!id.match(/^[0-9a-fA-F]{24}$/)) return console.log('invalid id');
-  const course = await Course.update({ _id : id }, {})
+  const course = await Course.findById(id)
   if (!course) return console.log('not a valid course');
   course.isPublished = true;
   course.author = 'Chidiebere';
